@@ -40,7 +40,7 @@ async def start(event):
         TEXT += f"» **ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀsɪᴏɴ :** `{__version__}`\n━━━━━━━━━━━━━━━━━"
         await event.client.send_file(
                     event.chat_id,
-                    "https://files.catbox.moe/xp3phx.jpg",
+                    "https://d.uguu.se/DUmGrGDy.jpg",
                     caption=TEXT, 
                     buttons=START_BUTTON
                 )
