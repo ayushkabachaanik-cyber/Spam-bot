@@ -1,12 +1,25 @@
 import sys
 import os
 from datetime import datetime
-from os import execl, getenv
+from os import execl
 from telethon import events
+from pymongo import MongoClient
 
-# ☠️ Heroku ka kachra hata diya yahan se
-from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, OWNER_ID, SUDO_USERS, CMD_HNDLR as hl
+# CONFIG
+from config import (
+    X1, X2, X3, X4, X5, X6, X7, X8, X9, X10,
+    OWNER_ID, CMD_HNDLR as hl, MONGO_URI
+)
 
+# ==========================================
+# 🍃 MONGODB SETUP
+# ==========================================
+mongo = MongoClient(MONGO_URI)
+db = mongo["DFS_BOT"]
+sudo_db = db["SUDO_USERS"]
+
+# Load sudo users from DB
+SUDO_USERS = [int(x["user_id"]) for x in sudo_db.find()]
 
 # ==========================================
 # 🏓 PING COMMAND
@@ -28,7 +41,6 @@ async def ping(e):
         end = datetime.now()
         mp = (end - start).microseconds / 1000
         await altron.edit(f"[🍹] ᴅғѕ вααᴘ кє gυℓαм\n[🏓] ɪᴊᴊᴀт ѕє ʀαниα\n[⚡] αυʀ ᴄнυᴅ ᴊαуαgα иαнɪ тσ\n\n➜ `{mp} ms`")
-
 
 # ==========================================
 # 🔄 REBOOT COMMAND
@@ -54,42 +66,70 @@ async def restart(e):
                 pass
         execl(sys.executable, sys.executable, *sys.argv)
 
-
 # ==========================================
-# 👑 SUDO COMMAND (Railway Optimized) ☠️
+# 👑 SUDO ADD (PERMANENT - REPLY ONLY)
 # ==========================================
-@X1.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@X2.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@X3.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@X4.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@X5.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@X6.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@X7.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@X8.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@X9.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@X10.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
+@X1.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
+@X2.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
+@X3.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
+@X4.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
+@X5.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
+@X6.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
+@X7.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
+@X8.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
+@X9.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
+@X10.on(events.NewMessage(incoming=True, pattern=r"\%ssudo$" % hl))
 async def addsudo(event):
-    if event.sender_id == OWNER_ID:
-        ok = await event.reply(f"»🍃 **𝐖єℓᴄσмє тσ ᴅғѕ gαᴅᴅαʀɪ иαнɪ кαʀиα иαнɪ тσ вαᴅмσѕнɪ мα кαʀυgα αυʀ ααᴊ ѕє тυ нαмℓσg кα внαɪ** 🍃")
-        
-        target = None
-        
-        # Reply se ID nikalna ya command se
-        if event.is_reply:
-            reply_msg = await event.get_reply_message()
-            target = reply_msg.sender_id
-        else:
-            try:
-                target = int(event.pattern_match.group(1).strip())
-            except ValueError:
-                return await ok.edit("αвє ᴊʜᴀᴛ кє вααℓ υραʀ ѕє ʀєᴘℓу ᴅє ʀαнα нαι вααᴘ кσ")
+    if event.sender_id != OWNER_ID:
+        return await event.reply("❌ Only owner can add sudo")
 
-        if target in SUDO_USERS:
-            await ok.edit(f"ᴛʜɪꜱ ᴜꜱᴇʀ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴀ ꜱᴜᴅᴏ ᴜꜱᴇʀ !!")
-        else:
-            # ☠️ MEMORY ME ADD KAR DIYA (Instantly working on Railway)
-            SUDO_USERS.append(target)
-            await ok.edit(f"»🍃 **нℓσ мєʀα ᴄυтɪєє** 🍃\n:⧽ `{target}`\n:⧽ `ωєℓᴄσмє тσ 𝐒 ᴍ ɢ 〆 ꜱ ᴘ ᴀ ᴍ`")
+    if not event.is_reply:
+        return await event.reply("⚠️ Reply to user")
 
-    elif event.sender_id in SUDO_USERS:
-        await event.reply("» ꜱᴏʀʀʏ, ᴏɴʟʏ ᴏᴡɴᴇʀ ᴄᴀɴ ᴀᴄᴄᴇꜱꜱ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ.")
+    reply = await event.get_reply_message()
+    target = reply.sender_id
+
+    if target in SUDO_USERS:
+        return await event.reply("⚠️ Already sudo user")
+
+    # Add to memory
+    SUDO_USERS.append(target)
+
+    # Add to MongoDB
+    sudo_db.insert_one({"user_id": target})
+
+    await event.reply(f"✅ SUDO ADDED\n👤 `{target}`")
+
+# ==========================================
+# ❌ UNSUDO (PERMANENT REMOVE)
+# ==========================================
+@X1.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+@X2.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+@X3.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+@X4.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+@X5.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+@X6.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+@X7.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+@X8.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+@X9.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+@X10.on(events.NewMessage(incoming=True, pattern=r"\%sunsudo$" % hl))
+async def removesudo(event):
+    if event.sender_id != OWNER_ID:
+        return await event.reply("❌ Only owner can remove sudo")
+
+    if not event.is_reply:
+        return await event.reply("⚠️ Reply to user")
+
+    reply = await event.get_reply_message()
+    target = reply.sender_id
+
+    if target not in SUDO_USERS:
+        return await event.reply("⚠️ Not a sudo user")
+
+    # Remove from memory
+    SUDO_USERS.remove(target)
+
+    # Remove from MongoDB
+    sudo_db.delete_one({"user_id": target})
+
+    await event.reply(f"❌ SUDO REMOVED\n👤 `{target}`")
