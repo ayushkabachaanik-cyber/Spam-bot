@@ -4,7 +4,7 @@ import base64
 from telethon import events
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, SUDO_USERS, OWNER_ID, CMD_HNDLR as hl
+from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, SUDO_USERS, OWNER_IDS, CMD_HNDLR as hl
 from RAUSHAN.data import ALTRON
 
 ECHO = []
@@ -28,7 +28,7 @@ async def echo(event):
 
             if user_id in ALTRON:
                 await event.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀʟᴛʀᴏɴ'ꜱ ᴏᴡɴᴇʀ.")
-            elif user_id == OWNER_ID:
+            elif user_id in OWNER_IDS:
                 await event.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴏᴡɴᴇʀ ᴏꜰ ᴛʜᴇꜱᴇ ʙᴏᴛꜱ.")
             elif user_id in SUDO_USERS:
                 await event.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀ ꜱᴜᴅᴏ ᴜꜱᴇʀ.")

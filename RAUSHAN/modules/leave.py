@@ -1,4 +1,4 @@
-from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, OWNER_ID, SUDO_USERS, CMD_HNDLR as hl
+from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, OWNER_IDS, SUDO_USERS, CMD_HNDLR as hl
 
 from telethon import events
 from telethon.tl.functions.channels import LeaveChannelRequest
@@ -15,7 +15,7 @@ from telethon.tl.functions.channels import LeaveChannelRequest
 @X9.on(events.NewMessage(incoming=True, pattern=r"\%sleave(?: |$)(.*)" % hl))
 @X10.on(events.NewMessage(incoming=True, pattern=r"\%sleave(?: |$)(.*)" % hl))
 async def leave(e):
-    if e.sender_id == OWNER_ID:
+    if e.sender_id in OWNER_IDS:
 
         if len(e.text) > 7:
             event = await e.reply("» ʟᴇᴀᴠɪɴɢ...")
