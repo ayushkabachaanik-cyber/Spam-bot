@@ -48,7 +48,7 @@ async def raid(e):
                     reply = choice(RAID)
                     caption = f"{username} {reply}"
                     await e.client.send_message(e.chat_id, caption)
-                    await asyncio.sleep(0.1)
+                    await asyncio.sleep(0)
         except (IndexError, ValueError, NameError):
             await e.reply(f"𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲: 𝐑𝐚𝐢𝐝\n  » {hl}raid <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n  » {hl}raid <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
         except Exception as e:
@@ -69,7 +69,7 @@ async def _(event):
     global REPLY_RAID
     check = f"{event.sender_id}_{event.chat_id}"
     if check in REPLY_RAID:
-        await asyncio.sleep(0.1)
+        await asyncio.sleep(0)
         await event.client.send_message(
             entity=event.chat_id,
             message="""{}""".format(choice(REPLYRAID)),
@@ -176,7 +176,7 @@ async def mraid(e):
                 reply = choice(MRAID)
                 caption = f"{username} {reply}"
                 await e.client.send_message(e.chat_id, caption)
-                await asyncio.sleep(0.1)
+                await asyncio.sleep(0)
         except (IndexError, ValueError, NameError):
             await e.reply(f"𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲: 𝗠𝗥𝗮𝗶𝗱\n  » {hl}mraid <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n  » {hl}mraid <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
         except Exception as e:
@@ -214,7 +214,7 @@ async def sraid(e):
                 reply = choice(SRAID)
                 caption = f"{username} {reply}"
                 await e.client.send_message(e.chat_id, caption)
-                await asyncio.sleep(0.1)
+                await asyncio.sleep(0)
         except (IndexError, ValueError, NameError):
             await e.reply(f"𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲: 𝗦𝗥𝗮𝗶𝗱\n  » {hl}sraid <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n  » {hl}sraid <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
         except Exception as e:
@@ -259,7 +259,7 @@ async def craid(e):
                     reply = choice(CRAID)
                     caption = f"{username} {reply}"
                     await e.client.send_message(e.chat_id, caption)
-                    await asyncio.sleep(0.1)
+                    await asyncio.sleep(0)
         except (IndexError, ValueError, NameError):
             await e.reply(f"𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲: 𝐂𝗥𝗮𝗶𝗱\n  » {hl}raid <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n  » {hl}raid <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
         except Exception as e:
