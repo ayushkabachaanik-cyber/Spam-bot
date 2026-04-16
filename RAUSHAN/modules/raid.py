@@ -30,6 +30,12 @@ async def raid(e):
 
         elif e.reply_to_msg_id:             
             a = await e.get_reply_message()
+            if a is None:
+                try:
+                    await e.reply("» ᴄᴏᴜʟᴅɴ'ᴛ ɢᴇᴛ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ. ᴛʀʏ ᴀɢᴀɪɴ!")
+                except Exception:
+                    pass
+                return
             entity = await e.client.get_entity(a.sender_id)
             uid = entity.id
 
@@ -113,6 +119,12 @@ async def rraid(e):
 
         elif e.reply_to_msg_id:             
             a = await e.get_reply_message()
+            if a is None:
+                try:
+                    await e.reply("» ᴄᴏᴜʟᴅɴ'ᴛ ɢᴇᴛ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ. ᴛʀʏ ᴀɢᴀɪɴ!")
+                except Exception:
+                    pass
+                return
             entity = await e.client.get_entity(a.sender_id)
 
         try:
@@ -151,6 +163,12 @@ async def drraid(e):
             entity = await e.client.get_entity(text[1])
         elif e.reply_to_msg_id:             
             a = await e.get_reply_message()
+            if a is None:
+                try:
+                    await e.reply("» ᴄᴏᴜʟᴅɴ'ᴛ ɢᴇᴛ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ. ᴛʀʏ ᴀɢᴀɪɴ!")
+                except Exception:
+                    pass
+                return
             entity = await e.client.get_entity(a.sender_id)
 
         try:
@@ -183,6 +201,12 @@ async def mraid(e):
 
         elif e.reply_to_msg_id:             
             a = await e.get_reply_message()
+            if a is None:
+                try:
+                    await e.reply("» ᴄᴏᴜʟᴅɴ'ᴛ ɢᴇᴛ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ. ᴛʀʏ ᴀɢᴀɪɴ!")
+                except Exception:
+                    pass
+                return
             entity = await e.client.get_entity(a.sender_id)
             uid = entity.id
 
@@ -221,6 +245,12 @@ async def sraid(e):
 
         elif e.reply_to_msg_id:             
             a = await e.get_reply_message()
+            if a is None:
+                try:
+                    await e.reply("» ᴄᴏᴜʟᴅɴ'ᴛ ɢᴇᴛ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ. ᴛʀʏ ᴀɢᴀɪɴ!")
+                except Exception:
+                    pass
+                return
             entity = await e.client.get_entity(a.sender_id)
             uid = entity.id
 
@@ -259,6 +289,12 @@ async def craid(e):
 
         elif e.reply_to_msg_id:             
             a = await e.get_reply_message()
+            if a is None:
+                try:
+                    await e.reply("» ᴄᴏᴜʟᴅɴ'ᴛ ɢᴇᴛ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ. ᴛʀʏ ᴀɢᴀɪɴ!")
+                except Exception:
+                    pass
+                return
             entity = await e.client.get_entity(a.sender_id)
             uid = entity.id
 
