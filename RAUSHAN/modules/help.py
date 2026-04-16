@@ -128,25 +128,31 @@ spam_msg = f"""
 @X10.on(events.CallbackQuery(pattern=r"help_back"))
 async def helpback(event):
     if event.query.user_id in SUDO_USERS:    
-        await event.edit(
-            HELP_STRING,
-            buttons=[
-              [
-                Button.inline("𝐒ᴘᴀᴍ", data="spam"),
-                Button.inline("𝐑ᴀɪᴅ", data="raid")
-              ],
-              [
-                Button.inline("𝐄xᴛʀᴀ", data="extra"),
-                Button.inline("𝐒ᴜᴅᴏ", data="sudo")
-              ],
-              [
-                Button.url("υᴘᴅᴀᴛᴇ", "https://t.me/+Imyf3M9TO5k1ODRl"),
-                Button.url("sυᴘᴘσʀᴛ", "https://t.me/+dv_rcq5uIXhmMWM1")
-              ]
-            ]
-          )
+        try:
+            await event.edit(
+                HELP_STRING,
+                buttons=[
+                  [
+                    Button.inline("𝐒ᴘᴀᴍ", data="spam"),
+                    Button.inline("𝐑ᴀɪᴅ", data="raid")
+                  ],
+                  [
+                    Button.inline("𝐄xᴛʀᴀ", data="extra"),
+                    Button.inline("𝐒ᴜᴅᴏ", data="sudo")
+                  ],
+                  [
+                    Button.url("υᴘᴅᴀᴛᴇ", "https://t.me/+Imyf3M9TO5k1ODRl"),
+                    Button.url("sυᴘᴘσʀᴛ", "https://t.me/+dv_rcq5uIXhmMWM1")
+                  ]
+                ]
+              )
+        except Exception:
+            pass
     else:
-        await event.answer("Make Your Own Altron Bots !! тєʀα вααᴘ нυ вαѕ", cache_time=0, alert=True)
+        try:
+            await event.answer("Make Your Own Altron Bots !! тєʀα вααᴘ нυ вαѕ", cache_time=0, alert=True)
+        except Exception:
+            pass
 
 
 @X1.on(events.CallbackQuery(pattern=r"spam"))
@@ -161,11 +167,17 @@ async def helpback(event):
 @X10.on(events.CallbackQuery(pattern=r"spam"))
 async def help_spam(event):
     if event.query.user_id in SUDO_USERS:    
-        await event.edit(spam_msg,
-              buttons=[[Button.inline("< Back", data="help_back"),],],
-              ) 
+        try:
+            await event.edit(spam_msg,
+                  buttons=[[Button.inline("< Back", data="help_back"),],],
+                  )
+        except Exception:
+            pass
     else:
-        await event.answer("Make Your Own Altron Bots !! тєʀα вααᴘ нυ вαѕ", cache_time=0, alert=True)
+        try:
+            await event.answer("Make Your Own Altron Bots !! тєʀα вααᴘ нυ вαѕ", cache_time=0, alert=True)
+        except Exception:
+            pass
 
 
 @X1.on(events.CallbackQuery(pattern=r"raid"))
@@ -180,11 +192,17 @@ async def help_spam(event):
 @X10.on(events.CallbackQuery(pattern=r"raid"))
 async def help_raid(event):
     if event.query.user_id in SUDO_USERS:
-        await event.edit(raid_msg,
-            buttons=[[Button.inline("< Back", data="help_back"),],],
-          )
+        try:
+            await event.edit(raid_msg,
+                buttons=[[Button.inline("< Back", data="help_back"),],],
+              )
+        except Exception:
+            pass
     else:
-        await event.answer("Make Your Own Altron Bots !! тєʀα вααᴘ нυ вαѕ", cache_time=0, alert=True)
+        try:
+            await event.answer("Make Your Own Altron Bots !! тєʀα вααᴘ нυ вαѕ", cache_time=0, alert=True)
+        except Exception:
+            pass
 
 
 sudo_msg = f"""
@@ -215,11 +233,17 @@ sudo_msg = f"""
 @X10.on(events.CallbackQuery(pattern=r"extra"))
 async def help_extra(event):
     if event.query.user_id in SUDO_USERS:
-        await event.edit(extra_msg,
-            buttons=[[Button.inline("< Back", data="help_back"),],],
-            )
+        try:
+            await event.edit(extra_msg,
+                buttons=[[Button.inline("< Back", data="help_back"),],],
+                )
+        except Exception:
+            pass
     else:
-        await event.answer("Make Your Own Altron Bots !! тєʀα вααᴘ нυ вαѕ", cache_time=0, alert=True)
+        try:
+            await event.answer("Make Your Own Altron Bots !! тєʀα вααᴘ нυ вαѕ", cache_time=0, alert=True)
+        except Exception:
+            pass
 
 
 @X1.on(events.CallbackQuery(pattern=r"sudo"))
@@ -234,8 +258,14 @@ async def help_extra(event):
 @X10.on(events.CallbackQuery(pattern=r"sudo"))
 async def help_sudo(event):
     if event.query.user_id in SUDO_USERS:
-        await event.edit(sudo_msg,
-            buttons=[[Button.inline("< Back", data="help_back"),],],
-            )
+        try:
+            await event.edit(sudo_msg,
+                buttons=[[Button.inline("< Back", data="help_back"),],],
+                )
+        except Exception:
+            pass
     else:
-        await event.answer("Make Your Own Altron Bots !! тєʀα вααᴘ нυ вαѕ", cache_time=0, alert=True)
+        try:
+            await event.answer("Make Your Own Altron Bots !! тєʀα вааᴘ нυ вαѕ", cache_time=0, alert=True)
+        except Exception:
+            pass

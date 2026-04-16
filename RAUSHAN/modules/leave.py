@@ -27,10 +27,16 @@ async def leave(e):
         else:
              if e.is_private:
                   alt = f"**» ʏᴏᴜ ᴄᴀɴ'ᴛ ᴅᴏ ᴛʜɪꜱ ʜᴇʀᴇ !!**\n\n» {hl}leave <ᴄʜᴀɴɴᴇʟ/ᴄʜᴀᴛ ɪᴅ> \n» {hl}leave : ᴛʏᴘᴇ ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ, ʙᴏᴛ ᴡɪʟʟ ᴀᴜᴛᴏ ʟᴇᴀᴠᴇ ᴛʜᴀᴛ ɢʀᴏᴜᴘ."
-                  await e.reply(alt)
+                  try:
+                      await e.reply(alt)
+                  except Exception:
+                      pass
              else:
                   event = await e.reply("» ʟᴇᴀᴠɪɴɢ...")
                   try:
                       await event.client(LeaveChannelRequest(int(e.chat_id)))
                   except Exception as e:
-                      await event.edit(str(e))
+                      try:
+                          await event.edit(str(e))
+                      except Exception:
+                          pass

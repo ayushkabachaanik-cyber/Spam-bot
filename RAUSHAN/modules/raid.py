@@ -35,22 +35,37 @@ async def raid(e):
 
         try:
             if uid in ALTRON:
-                await e.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀʟᴛʀᴏɴ'ꜱ ᴏᴡɴᴇʀ.")
+                try:
+                    await e.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀʟᴛʀᴏɴ'ꜱ ᴏᴡɴᴇʀ.")
+                except Exception:
+                    pass
             elif uid in OWNER_IDS:
-                await e.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴏᴡɴᴇʀ ᴏꜰ ᴛʜᴇꜱᴇ ʙᴏᴛꜱ.")
+                try:
+                    await e.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴏᴡɴᴇʀ ᴏꜰ ᴛʜᴇꜱᴇ ʙᴏᴛꜱ.")
+                except Exception:
+                    pass
             elif uid in SUDO_USERS:
-                await e.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀ ꜱᴜᴅᴏ ᴜꜱᴇʀ.")
+                try:
+                    await e.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀ ꜱᴜᴅᴏ ᴜꜱᴇʀ.")
+                except Exception:
+                    pass
             else:
                 first_name = entity.first_name
                 counter = int(xraid[1])
                 username = f"[{first_name}](tg://user?id={uid})"
                 for _ in range(counter):
-                    reply = choice(RAID)
-                    caption = f"{username} {reply}"
-                    await e.client.send_message(e.chat_id, caption)
+                    try:
+                        reply = choice(RAID)
+                        caption = f"{username} {reply}"
+                        await e.client.send_message(e.chat_id, caption)
+                    except Exception:
+                        pass
                     await asyncio.sleep(0)
         except (IndexError, ValueError, NameError):
-            await e.reply(f"𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲: 𝐑𝐚𝐢𝐝\n  » {hl}raid <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n  » {hl}raid <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
+            try:
+                await e.reply(f"𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲: 𝐑𝐚𝐢𝐝\n  » {hl}raid <ᴄᴏᴜɴᴛ> <ᴜꜱᴇʀɴᴀᴍᴇ ᴏꜰ ᴜꜱᴇʀ>\n  » {hl}raid <ᴄᴏᴜɴᴛ> <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
+            except Exception:
+                pass
         except Exception as e:
             print(e)
 
@@ -70,11 +85,14 @@ async def _(event):
     check = f"{event.sender_id}_{event.chat_id}"
     if check in REPLY_RAID:
         await asyncio.sleep(0)
-        await event.client.send_message(
-            entity=event.chat_id,
-            message="""{}""".format(choice(REPLYRAID)),
-            reply_to=event.message.id,
-        )
+        try:
+            await event.client.send_message(
+                entity=event.chat_id,
+                message="""{}""".format(choice(REPLYRAID)),
+                reply_to=event.message.id,
+            )
+        except Exception:
+            pass
 
 
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%srraid(?: |$)(.*)" % hl))

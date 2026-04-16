@@ -36,17 +36,31 @@ print("\n𝗢𝗫𝗬𝗚𝗘𝗡 𝐒𝐩𝐚𝐦 𝐁𝐨𝐭𝐬 𝐃𝐞𝐩
 
 
 async def main():
-    await X1.run_until_disconnected()
-    await X2.run_until_disconnected()
-    await X3.run_until_disconnected()
-    await X4.run_until_disconnected()
-    await X5.run_until_disconnected()
-    await X6.run_until_disconnected()
-    await X7.run_until_disconnected()
-    await X8.run_until_disconnected()
-    await X9.run_until_disconnected()
-    await X10.run_until_disconnected()
+    try:
+        await asyncio.gather(
+            X1.run_until_disconnected(),
+            X2.run_until_disconnected(),
+            X3.run_until_disconnected(),
+            X4.run_until_disconnected(),
+            X5.run_until_disconnected(),
+            X6.run_until_disconnected(),
+            X7.run_until_disconnected(),
+            X8.run_until_disconnected(),
+            X9.run_until_disconnected(),
+            X10.run_until_disconnected(),
+            return_exceptions=True
+        )
+    except (KeyboardInterrupt, asyncio.CancelledError):
+        pass
+    except Exception as e:
+        logging.error(f"Error in main event loop: {e}")
 
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
+if __name__ == "__main__":
+    try:
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(main())
+    except KeyboardInterrupt:
+        print("\n[!] Bot stopped by user")
+    except Exception as e:
+        logging.error(f"Fatal error: {e}")

