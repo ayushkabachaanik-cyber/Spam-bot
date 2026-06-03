@@ -15,7 +15,7 @@
 
 ### Error 2: `telethon.errors.rpcerrorlist.WebpageMediaEmptyError` ✅
 - **Status:** FIXED
-- **File:** RAUSHAN/modules/start.py
+- **File:** MADARA/modules/start.py
 - **Cause:** Media URL not available or empty
 - **Fix:** Added try-except with fallback to text message
 - **Verification:** ✅ Gracefully handles media errors

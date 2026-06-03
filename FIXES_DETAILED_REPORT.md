@@ -29,7 +29,7 @@ await asyncio.gather(
 ---
 
 ### **ERROR 2: telethon.errors.rpcerrorlist.WebpageMediaEmptyError**
-**Location:** RAUSHAN/modules/start.py line 41
+**Location:** MADARA/modules/start.py line 41
 **Root Cause:** Media URL not accessible or empty
 **Solution Applied:**
 ```python
@@ -45,12 +45,12 @@ except Exception:
 
 ### **ERROR 3: telethon.errors.rpcerrorlist.ChatSendPlainForbiddenError**
 **Location:** 
-- RAUSHAN/modules/bot.py line 73 (restart reply)
-- RAUSHAN/modules/start.py (send_message)
-- RAUSHAN/modules/spam.py (send_message in loop)
-- RAUSHAN/modules/raid.py (send_message)
-- RAUSHAN/modules/echo.py (reply)
-- RAUSHAN/modules/raid.py (background handler)
+- MADARA/modules/bot.py line 73 (restart reply)
+- MADARA/modules/start.py (send_message)
+- MADARA/modules/spam.py (send_message in loop)
+- MADARA/modules/raid.py (send_message)
+- MADARA/modules/echo.py (reply)
+- MADARA/modules/raid.py (background handler)
 
 **Root Cause:** Some Telegram chats/groups don't allow plain text messages
 **Solution Applied:**
@@ -91,7 +91,7 @@ except Exception:
 
 ---
 
-### **2. RAUSHAN/modules/start.py** ✅
+### **2. MADARA/modules/start.py** ✅
 - ✅ Added try-except around send_file()
 - ✅ Added fallback to send_message()
 - ✅ Added outer try-except for complete safety
@@ -100,7 +100,7 @@ except Exception:
 
 ---
 
-### **3. RAUSHAN/modules/bot.py** ✅
+### **3. MADARA/modules/bot.py** ✅
 - ✅ Added asyncio import
 - ✅ Added try-except to ping() command
 - ✅ Added try-except to restart() command  
@@ -120,7 +120,7 @@ except Exception:
 
 ---
 
-### **4. RAUSHAN/modules/spam.py** ✅
+### **4. MADARA/modules/spam.py** ✅
 - ✅ Added try-except around each message send
 - ✅ Added try-except around mk.reply()
 - ✅ Added try-except around send_message()
@@ -130,7 +130,7 @@ except Exception:
 
 ---
 
-### **5. RAUSHAN/modules/raid.py** ✅
+### **5. MADARA/modules/raid.py** ✅
 - ✅ Added try-except around each reply()
 - ✅ Added try-except around send_message()
 - ✅ Added try-except to background handler
@@ -140,7 +140,7 @@ except Exception:
 
 ---
 
-### **6. RAUSHAN/modules/echo.py** ✅
+### **6. MADARA/modules/echo.py** ✅
 - ✅ Added try-except around entire handler
 - ✅ Added try-except around each reply()
 - ✅ Added nested error handling
@@ -150,7 +150,7 @@ except Exception:
 
 ---
 
-### **7. RAUSHAN/modules/help.py** ✅
+### **7. MADARA/modules/help.py** ✅
 - ✅ Added try-except to helpback() callback
 - ✅ Added try-except to help_spam() callback
 - ✅ Added try-except to help_raid() callback
@@ -161,14 +161,14 @@ except Exception:
 
 ---
 
-### **8. RAUSHAN/modules/logs.py** ✅
+### **8. MADARA/modules/logs.py** ✅
 - ✅ Added try-except to sudo user reply
 
 **Changes:** Graceful error handling for unauthorized access messages.
 
 ---
 
-### **9. RAUSHAN/modules/leave.py** ✅
+### **9. MADARA/modules/leave.py** ✅
 - ✅ Added try-except around private chat reply
 - ✅ Added try-except around event.edit()
 - ✅ Added nested error handling
