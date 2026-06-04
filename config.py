@@ -70,16 +70,16 @@ SUDO_USERS = list(set(SUDO_USERS))
 # ==========================================
 # 🤖 BOT TOKENS (AS YOU PROVIDED)
 # ==========================================
-BOT_TOKEN = getenv("BOT_TOKEN", "8729582864:AAEsEADH7wQXOlV5hm8bT1f_LhmLoN_INB0")
-BOT_TOKEN2 = getenv("BOT_TOKEN2", "8492531985:AAFfpR_e_hVglfNNi54xgCIFkr2fO50aNlk")
-BOT_TOKEN3 = getenv("BOT_TOKEN3", "8611361143:AAEfCrWbD_JODP3DNB9yLMBVN74nR0WZfyM")
-BOT_TOKEN4 = getenv("BOT_TOKEN4", "8749385192:AAHgpwpu6Hy9mIUa6k2fX4wQ6Qr38qLqW38")
-BOT_TOKEN5 = getenv("BOT_TOKEN5", "7979190403:AAFEu10OyXfdRi4ckTWjpfnRjmpXuMKZcts")
-BOT_TOKEN6 = getenv("BOT_TOKEN6", "8637265090:AAHDkPQ81u5ZBUtD-J2HHMoMoL53I-TZ_1I")
-BOT_TOKEN7 = getenv("BOT_TOKEN7", "8740366034:AAFF7sjnHH_R7LcBWS7e42dSBG07o9PwNng")
-BOT_TOKEN8 = getenv("BOT_TOKEN8", "8721234505:AAEA_BMNvqrWq07wTKxzoQ98LgEWEizn6-I")
-BOT_TOKEN9 = getenv("BOT_TOKEN9", "8715356761:AAFZ7RYkmt0B483xp6rsYTaEnNvIKHtbRGU")
-BOT_TOKEN10 = getenv("BOT_TOKEN10", "8514898003:AAFZyxjZOoI6lxIzzuV3glpvCLat8WknfNk")
+BOT_TOKEN = getenv("BOT_TOKEN", "")
+BOT_TOKEN2 = getenv("BOT_TOKEN2", "")
+BOT_TOKEN3 = getenv("BOT_TOKEN3", "")
+BOT_TOKEN4 = getenv("BOT_TOKEN4", "")
+BOT_TOKEN5 = getenv("BOT_TOKEN5", "")
+BOT_TOKEN6 = getenv("BOT_TOKEN6", "")
+BOT_TOKEN7 = getenv("BOT_TOKEN7", "")
+BOT_TOKEN8 = getenv("BOT_TOKEN8", "")
+BOT_TOKEN9 = getenv("BOT_TOKEN9", "")
+BOT_TOKEN10 = getenv("BOT_TOKEN10", "")
 
 # ==========================================
 # 🤖 CLIENTS
